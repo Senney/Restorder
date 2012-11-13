@@ -68,7 +68,7 @@
 			<Grid x:Name="Section1" Margin="0,64,0,282" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
 				<Grid.RenderTransform>
 					<TransformGroup>
-						<ScaleTransform ScaleY="-1" ScaleX="1"/>
+						<ScaleTransform ScaleY="1" ScaleX="1"/>
 						<SkewTransform AngleY="0" AngleX="0"/>
 						<RotateTransform Angle="0"/>
 						<TranslateTransform/>
@@ -85,7 +85,7 @@
 			<Grid x:Name="Section2" Margin="0,0,0,2" Height="276" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
 				<Grid.RenderTransform>
 					<TransformGroup>
-						<ScaleTransform ScaleY="-1" ScaleX="1"/>
+						<ScaleTransform ScaleY="1" ScaleX="1"/>
 						<SkewTransform AngleY="0" AngleX="0"/>
 						<RotateTransform Angle="0"/>
 						<TranslateTransform/>
@@ -105,7 +105,7 @@
                 <Expander Header="Expander" RenderTransformOrigin="0.5,0.5" Height="58">
                     <Expander.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
                             <SkewTransform AngleY="0" AngleX="0"/>
                             <RotateTransform Angle="0"/>
                             <TranslateTransform/>
@@ -121,7 +121,7 @@
                 <Button x:Name="BackToLayout" Content="&lt;" Margin="-3.077,7.886,0,8.56" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}">
                     <Button.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="-1"/>
+                            <ScaleTransform ScaleX="1"/>
                             <SkewTransform/>
                             <RotateTransform Angle="181.146"/>
                             <TranslateTransform/>
@@ -133,7 +133,7 @@
         <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
                     <SkewTransform AngleY="0" AngleX="0"/>
                     <RotateTransform Angle="0"/>
                     <TranslateTransform/>
