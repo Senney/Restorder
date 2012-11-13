@@ -114,62 +114,9 @@
             			<Button Content="Button"/>
             			<Button Content="Button"/>
             		</StackPanel>
-            	</Expander><<<<<<< .mine            <StackPanel x:Name="Menu" Margin="0,66.167,233.5,241.833" Background="#FF76FF3A">
-            	<Expander x:Name="Section_1" Header="Section 1" AllowDrop="True" IsExpanded="True">
-            		<StackPanel Height="65">
-            			<Button Content="Button"/>
-            			<Button Content="Button"/>
-            			<Button Content="Button"/>
-            		</StackPanel>
             	</Expander>
-            	<Expander x:Name="Section_2" Header="Expander" HorizontalAlignment="Left">
-            		<StackPanel Width="526.5">
-            			<Button Content="Button"/>
-            			<Button Content="Button"/>
-            		</StackPanel>
-            	</Expander>
-=======            <StackPanel x:Name="Menu" Margin="0,242.5,233.5,65.5" Background="#FF76FF3A">
-                <Expander Header="Expander" RenderTransformOrigin="0.5,0.5" Height="58">
-                    <Expander.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform ScaleY="1" ScaleX="1"/>
-                            <SkewTransform AngleY="0" AngleX="0"/>
-                            <RotateTransform Angle="0"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Expander.RenderTransform>
-                    <Grid Background="#FFE5E5E5"/>
-                </Expander>
->>>>>>> .theirs            </StackPanel>
-            <Grid x:Name="menuHeader" Height="65.5" VerticalAlignment="Bottom" Margin="8,0,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="BackToLayout" Content="&lt;" Margin="-3.077,7.886,0,8.56" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}">
-                    <Button.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform ScaleX="1"/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="181.146"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Button.RenderTransform>
-                </Button>
-            </Grid><<<<<<< .mine=======                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="BackToLayout" Content="&lt;" Margin="-3.077,7.886,0,8.56" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}">
-                    <Button.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform ScaleX="1"/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="181.146"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Button.RenderTransform>
-                </Button>
-            </Grid>
->>>>>>> .theirs        </Grid>
+			</StackPanel>
+		</Grid>
         <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
