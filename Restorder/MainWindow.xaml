@@ -28,6 +28,9 @@
 	</Window.Resources>
 
 	<Grid x:Name="LayoutRoot" Margin="0" Background="#FF232323" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="Height">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
 		<Grid.RenderTransform>
 			<TransformGroup>
 				<ScaleTransform ScaleY="-1"/>
@@ -39,7 +42,7 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-		<Grid x:Name="TableLayout" Height="827" VerticalAlignment="Bottom" Background="#FF313131" RenderTransformOrigin="0.525,0.479" d:LayoutOverrides="VerticalAlignment">
+		<Grid x:Name="TableLayout" Height="827" VerticalAlignment="Bottom" Background="#FF313131" RenderTransformOrigin="0.525,0.479" d:IsHidden="True">
 			<Grid.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform ScaleY="-1"/>
@@ -64,6 +67,37 @@
 				<Button Content="1" Height="90" Margin="48,0,0,8" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90"/>
 				<Button Content="1" Height="90" Margin="0,0,48,8" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90"/>
 				<Button Content="1" Height="90" Margin="350,0,322,8" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom"/>
+			</Grid>
+		</Grid>
+		<Grid x:Name="SelectedTable" Background="#FF0092A5">
+			<Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,242.5,0,65.5" Background="White"/>
+			<StackPanel x:Name="Menu" Margin="0,242.5,233.5,65.5" Background="#FF76FF3A">
+				<Expander Header="Expander" RenderTransformOrigin="0.5,0.5" Height="58">
+					<Expander.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleY="-1" ScaleX="1"/>
+							<SkewTransform AngleY="0" AngleX="0"/>
+							<RotateTransform Angle="0"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Expander.RenderTransform>
+					<Grid Background="#FFE5E5E5"/>
+				</Expander>
+			</StackPanel>
+			<Grid x:Name="menuHeader" Height="65.5" VerticalAlignment="Bottom" Margin="8,0,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Button x:Name="BackToLayout" Content="&lt;" Margin="-3.077,7.886,0,8.56" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}">
+					<Button.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1"/>
+							<SkewTransform/>
+							<RotateTransform Angle="181.146"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Button.RenderTransform>
+				</Button>
 			</Grid>
 		</Grid>
 	</Grid>
