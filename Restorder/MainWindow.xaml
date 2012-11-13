@@ -1,17 +1,40 @@
 ﻿<Window
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Restorder" mc:Ignorable="d"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Restorder" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="Restorder.MainWindow"
 	x:Name="Window"
-	Title="Restorder Ordering System" Height="1024" Width="768" ResizeMode="NoResize">
+	Title="Restorder Ordering System" Height="1021" Width="768" ResizeMode="NoResize">
 	<Window.Resources>
 		<Style x:Key="TableButtonStyle" TargetType="{x:Type Button}">
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid>
-							<Ellipse Fill="#FF2FDE00" Stroke="Black" StrokeThickness="2.2"/>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.5"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver">
+										<Storyboard>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="ellipse">
+												<EasingDoubleKeyFrame KeyTime="0" Value="3.2"/>
+											</DoubleAnimationUsingKeyFrames>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+												<EasingColorKeyFrame KeyTime="0" Value="#FF6AA55A"/>
+											</ColorAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed"/>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<VisualStateManager.CustomVisualStateManager>
+								<ei:ExtendedVisualStateManager/>
+							</VisualStateManager.CustomVisualStateManager>
+							<Ellipse x:Name="ellipse" Fill="#FF2FDE00" Stroke="Black" StrokeThickness="2.2"/>
 							<ContentPresenter TextBlock.FontSize = "24" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 						</Grid>
 						<ControlTemplate.Triggers>
@@ -33,40 +56,59 @@
 		</Grid.RowDefinitions>
 		<Grid.RenderTransform>
 			<TransformGroup>
-				<ScaleTransform ScaleY="-1"/>
-				<SkewTransform/>
-				<RotateTransform/>
+				<ScaleTransform ScaleY="1" ScaleX="1"/>
+				<SkewTransform AngleY="0" AngleX="0"/>
+				<RotateTransform Angle="0"/>
 				<TranslateTransform/>
 			</TransformGroup>
 		</Grid.RenderTransform>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-		<Grid x:Name="TableLayout" Height="827" VerticalAlignment="Bottom" Background="#FF313131" RenderTransformOrigin="0.525,0.479" d:IsHidden="True">
-			<Grid.RenderTransform>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.367*"/>
+				<ColumnDefinition Width="0.633*"/>
+			</Grid.ColumnDefinitions>			<Grid.RenderTransform>
 				<TransformGroup>
-					<ScaleTransform ScaleY="-1"/>
-					<SkewTransform/>
-					<RotateTransform/>
+					<ScaleTransform ScaleY="-1" ScaleX="1"/>
+					<SkewTransform AngleY="0" AngleX="0"/>
+					<RotateTransform Angle="0"/>
 					<TranslateTransform Y="34.734"/>
 				</TransformGroup>
 			</Grid.RenderTransform>
-			<Grid x:Name="Section1" Height="396" VerticalAlignment="Top">
-				<Button Content="1" Height="90" Margin="48,34,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90"/>
-				<Button Content="4" Height="90" Margin="0,0,48,33.5" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90"/>
-				<Button Content="2" Margin="48,154,0,152" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90"/>
-				<Button Content="5" Margin="0,0,202,33.5" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Height="90" VerticalAlignment="Bottom" Width="90"/>
-				<Button Content="3" Height="90" Margin="48,0,0,33.5" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90"/>
-				<Button Content="6" Height="90" Margin="314.5,0,357.5,33.5" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom"/>
-				<Rectangle x:Name="Section_Rectangle" Fill="#2A74A766" Stroke="Black" StrokeThickness="2.2" Margin="1.5,1.5,0,-1.5" d:IsLocked="True"/>
+			<Grid x:Name="Section1" Margin="0,64,0,282" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleY="-1" ScaleX="1"/>
+						<SkewTransform AngleY="0" AngleX="0"/>
+						<RotateTransform Angle="0"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Rectangle x:Name="Section_Rectangle" Fill="#2A74A766" Stroke="Black" StrokeThickness="2.2" Margin="-2.25,1.5,0,-1.5"/>
+				<Button Content="1" Height="90" Margin="108.5,66,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
+				<Button Content="4" Height="90" Margin="108.5,0,0,70" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8"/>
+				<Button Content="2" Height="90" Margin="338.5,66,333.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" Click="openTableManager"/>
+				<Button Content="5" Height="90" Margin="338.5,0,333.5,70" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" Click="openTableManager"/>
+				<Button Content="6" Height="90" Margin="0,0,109.5,70" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+				<Button Content="3" Height="90" Margin="0,66,109.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
 			</Grid>
-			<Grid x:Name="Section2" Margin="0,400,0,0">
-				<Button Content="1" Height="90" Margin="48,34,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90"/>
-				<Button Content="1" Height="90" Margin="350,34,322,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top"/>
-				<Button Content="1" Height="90" Margin="0,34,48,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90"/>
-				<Button Content="1" Height="90" Margin="48,0,0,8" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90"/>
-				<Button Content="1" Height="90" Margin="0,0,48,8" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90"/>
-				<Button Content="1" Height="90" Margin="350,0,322,8" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom"/>
+			<Grid x:Name="Section2" Margin="0,0,0,2" Height="276" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleY="-1" ScaleX="1"/>
+						<SkewTransform AngleY="0" AngleX="0"/>
+						<RotateTransform Angle="0"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Rectangle x:Name="Section2_Rectangle" Fill="#602828EF" Stroke="Black" Margin="0,-4,0,0"/>
+				<Button Content="7" Height="90" Margin="102,8,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
+				<Button Content="8" Margin="102,0,0,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
+				<Button Content="11" Height="90" Margin="0,8,85.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+				<Button Content="12" Margin="0,0,85.5,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
+				<Button Content="9" Margin="256,96,0,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
+				<Button Content="10" Margin="0,96,248,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
 			</Grid>
 		</Grid>
 		<Grid x:Name="SelectedTable" Background="#FF0092A5">
@@ -100,5 +142,14 @@
 				</Button>
 			</Grid>
 		</Grid>
-	</Grid>
+		<Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
+			<Grid.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleY="-1" ScaleX="1"/>
+					<SkewTransform AngleY="0" AngleX="0"/>
+					<RotateTransform Angle="0"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Grid.RenderTransform>
+		</Grid>	</Grid>
 </Window>

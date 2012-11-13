@@ -23,5 +23,11 @@ namespace Restorder
 
 			// Insert code required on object creation below this point.
 		}
+
+		private void openTableManager(object sender, System.Windows.RoutedEventArgs e)
+		{
+			Button parent = (Button)sender;
+			MessageBox.Show("Table handler for " + parent.Content);
+		}
 	}
 }
