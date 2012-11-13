@@ -65,41 +65,7 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-			<Grid x:Name="Section1" Margin="0,64,0,282" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-				<Grid.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform ScaleY="1" ScaleX="1"/>
-						<SkewTransform AngleY="0" AngleX="0"/>
-						<RotateTransform Angle="0"/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Grid.RenderTransform>
-				<Rectangle x:Name="Section_Rectangle" Fill="#2A74A766" Stroke="Black" StrokeThickness="2.2" Margin="-2.25,1.5,0,-1.5"/>
-				<Button Content="1" Height="90" Margin="108.5,66,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
-				<Button Content="4" Height="90" Margin="108.5,0,0,70" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8"/>
-				<Button Content="2" Height="90" Margin="338.5,66,333.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" Click="openTableManager"/>
-				<Button Content="5" Height="90" Margin="338.5,0,333.5,70" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" Click="openTableManager"/>
-				<Button Content="6" Height="90" Margin="0,0,109.5,70" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
-				<Button Content="3" Height="90" Margin="0,66,109.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
-			</Grid>
-			<Grid x:Name="Section2" Margin="0,0,0,2" Height="276" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-				<Grid.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform ScaleY="1" ScaleX="1"/>
-						<SkewTransform AngleY="0" AngleX="0"/>
-						<RotateTransform Angle="0"/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Grid.RenderTransform>
-				<Rectangle x:Name="Section2_Rectangle" Fill="#602828EF" Stroke="Black" Margin="0,-4,0,0"/>
-				<Button Content="7" Height="90" Margin="102,8,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
-				<Button Content="8" Margin="102,0,0,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
-				<Button Content="11" Height="90" Margin="0,8,85.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
-				<Button Content="12" Margin="0,0,85.5,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
-				<Button Content="9" Margin="256,96,0,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
-				<Button Content="10" Margin="0,96,248,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
-			</Grid>
-        <Grid x:Name="SelectedTable" Background="#FF0092A5">
+        <Grid x:Name="SelectedTable" Background="#FF0092A5" d:IsHidden="True">
             <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White"/>
             <StackPanel x:Name="Menu" Margin="0,66.167,233.5,241.833" Background="#FF76FF3A">
             	<Expander x:Name="Section_1" Header="Section 1" AllowDrop="True" IsExpanded="True">
@@ -126,16 +92,53 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
+        	<Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,7.56" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}">
+        		<Button.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform ScaleY="-1" ScaleX="-1"/>
+        				<SkewTransform AngleY="0" AngleX="0"/>
+        				<RotateTransform Angle="-181.146"/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Button.RenderTransform>
+        	</Button>
         </Grid>
-        <Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}" Height="49.054" VerticalAlignment="Top">
-        	<Button.RenderTransform>
-        		<TransformGroup>
-        			<ScaleTransform ScaleY="-1" ScaleX="-1"/>
-        			<SkewTransform AngleY="0" AngleX="0"/>
-        			<RotateTransform Angle="-181.146"/>
-        			<TranslateTransform/>
-        		</TransformGroup>
-        	</Button.RenderTransform>
-        </Button>
+        <Grid x:Name="TablePage" Margin="0,0,0,177">
+        	<Rectangle Fill="#FF454545" Margin="0,64,0,-177" Stroke="Black"/>
+        	<Grid x:Name="Section1" Margin="0,64,0,105" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="GridBox">
+        		<Grid.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform ScaleY="1" ScaleX="1"/>
+        				<SkewTransform AngleY="0" AngleX="0"/>
+        				<RotateTransform Angle="0"/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Grid.RenderTransform>
+        		<Rectangle x:Name="Section_Rectangle" Fill="#2A74A766" Stroke="Black" StrokeThickness="2.2" Margin="-2.25,1.5,0,311"/>
+        		<Button Content="1" Height="90" Margin="108.5,66,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
+        		<Button Content="4" Height="90" Margin="108.5,200,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8"/>
+        		<Button Content="2" Height="90" Margin="338.5,66,333.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" Click="openTableManager"/>
+        		<Button Content="5" Height="90" Margin="338.5,200,333.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" Click="openTableManager"/>
+        		<Button Content="6" Height="90" Margin="0,200,109.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+        		<Button Content="3" Height="90" Margin="0,66,109.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+        	</Grid>
+        	<Grid x:Name="Section2" Margin="0,400.667,0,139.333" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="GridBox">
+        		<Grid.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform ScaleY="1" ScaleX="1"/>
+        				<SkewTransform AngleY="0" AngleX="0"/>
+        				<RotateTransform Angle="0"/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Grid.RenderTransform>
+        		<Rectangle x:Name="Section2_Rectangle" Fill="#602828EF" Stroke="Black" Margin="0,-4,0,0"/>
+        		<Button Content="7" Height="90" Margin="102,8,0,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
+        		<Button Content="8" Margin="102,0,0,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
+        		<Button Content="11" Height="90" Margin="0,8,85.5,0" Style="{DynamicResource TableButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+        		<Button Content="12" Margin="0,0,85.5,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
+        		<Button Content="9" Margin="256,96,0,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
+        		<Button Content="10" Margin="0,96,248,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+        	</Grid>
+        </Grid>
     </Grid>
 </Window>
