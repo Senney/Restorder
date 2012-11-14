@@ -65,45 +65,71 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-        <Grid x:Name="SelectedTable" Background="#FF0092A5" d:IsHidden="True">
-            <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White"/>
-            <StackPanel x:Name="Menu" Margin="0,66.167,233.5,241.833" Background="#FF76FF3A">
-            	<Expander x:Name="Section_1" Header="Section 1" AllowDrop="True" IsExpanded="True">
-            		<StackPanel Height="65">
-            			<Button Content="Button"/>
-            			<Button Content="Button"/>
-            			<Button Content="Button"/>
-            		</StackPanel>
-            	</Expander>
-            	<Expander x:Name="Section_2" Header="Expander" HorizontalAlignment="Left">
-            		<StackPanel Width="526.5">
-            			<Button Content="Button"/>
-            			<Button Content="Button"/>
-            		</StackPanel>
-            	</Expander>
-			</StackPanel>
-		</Grid>
-        <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5" d:IsHidden="True">
             <Grid.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleY="1" ScaleX="1"/>
-                    <SkewTransform AngleY="0" AngleX="0"/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
+                	<ScaleTransform ScaleY="1" ScaleX="1"/>
+                	<SkewTransform AngleY="0" AngleX="0"/>
+                	<RotateTransform Angle="0"/>
+                	<TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-        	<Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,7.56" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}">
-        		<Button.RenderTransform>
-        			<TransformGroup>
-        				<ScaleTransform ScaleY="-1" ScaleX="-1"/>
-        				<SkewTransform AngleY="0" AngleX="0"/>
-        				<RotateTransform Angle="-181.146"/>
-        				<TranslateTransform/>
-        			</TransformGroup>
-        		</Button.RenderTransform>
-        	</Button>
         </Grid>
-        <Grid x:Name="TablePage" Margin="0,0,0,177">
+        <Grid x:Name="SelectedTable" Background="#FF0092A5">
+            <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White"/>
+            <Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}" Height="49.054" VerticalAlignment="Top">
+            	<Button.RenderTransform>
+            		<TransformGroup>
+            			<ScaleTransform ScaleY="-1" ScaleX="-1"/>
+            			<SkewTransform AngleY="0" AngleX="0"/>
+            			<RotateTransform Angle="-181.146"/>
+            			<TranslateTransform/>
+            		</TransformGroup>
+            	</Button.RenderTransform>
+            </Button>
+            <ScrollViewer Margin="0,66.167,237.5,241.833" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            	<StackPanel x:Name="Menu" Background="#FF76FF3A" CanVerticallyScroll="True" Height="685" Width="528.5">
+            		<Expander x:Name="Section_1" Header="Section 1" AllowDrop="True" Padding="0,15,0,0" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" FontSize="16">
+            			<StackPanel>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            			</StackPanel>
+            		</Expander>
+            		<Expander x:Name="Section_2" Header="Section 2" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
+            			<StackPanel Width="526.5">
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            			</StackPanel>
+            		</Expander>
+            		<Expander x:Name="Section_3" Header="Section 3" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
+            			<StackPanel Width="526.5">
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            			</StackPanel>
+            		</Expander>
+            		<Expander x:Name="Section_4" Header="Section 4" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
+            			<StackPanel Width="526.5">
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            			</StackPanel>
+            		</Expander>
+            		<Expander x:Name="Section_5" Header="Section 5" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
+            			<StackPanel Width="526.5">
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            			</StackPanel>
+            		</Expander>
+            		<Expander x:Name="Section_6" Header="Section 6" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
+            			<StackPanel Width="526.5">
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            				<Button Content="Button" Margin="40,0,0,0"/>
+            			</StackPanel>
+            		</Expander>
+            	</StackPanel>
+            </ScrollViewer>
+		</Grid>
+        <Grid x:Name="TablePage" Margin="0,0,0,177" d:IsHidden="True" Visibility="Hidden">
         	<Rectangle Fill="#FF454545" Margin="0,64,0,-177" Stroke="Black"/>
         	<Grid x:Name="Section1" Margin="0,64,0,105" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="GridBox">
         		<Grid.RenderTransform>
