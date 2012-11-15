@@ -26,6 +26,14 @@ namespace Restorder
             m_menu[category].Add(item);
         }
 
+        public void addItems(string category, List<MenuItem> items)
+        {
+            if (!m_menu.ContainsKey(category))
+                m_menu[category] = items;
+            else
+                m_menu[category].AddRange(items);
+        }
+
         public List<MenuItem> getItems(string category)
         {
             return m_menu[category];

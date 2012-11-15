@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Restorder
 {
-    class MenuItem
+    class MenuItem : IEquatable<MenuItem>
     {
         private string itemName;
         public string Name
@@ -16,8 +16,8 @@ namespace Restorder
             set { this.itemName = value; }
         }
 
-        private float itemCost;
-        public float Cost
+        private double itemCost;
+        public double Cost
         {
             get { return this.itemCost; }
             set { this.itemCost = value; }
@@ -35,7 +35,7 @@ namespace Restorder
             get { return itemPicture; }
         }
 
-        public MenuItem(string name, float cost, string picture = null, string[] ingredients = null)
+        public MenuItem(string name, double cost, string picture = null, string[] ingredients = null)
         {
             this.itemName = name;
             this.itemCost = cost;
@@ -52,6 +52,12 @@ namespace Restorder
 
             if (ingredients != null)
                 this.itemIngredients.AddRange(ingredients);
+        }
+
+
+        public bool Equals(MenuItem other)
+        {
+            return (other.Name == this.Name && other.Cost == this.Cost);
         }
     }
 }

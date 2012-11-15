@@ -27,7 +27,7 @@ namespace Restorder
 
             for (int i = 0; i < num; i++)
             {
-                tables.Add(new Table());
+                tables.Add(new Table(i + 1));
             }
         }
 
@@ -47,7 +47,7 @@ namespace Restorder
         /// <returns>Returns the table that was added to the manager.</returns>
         public Table addTable()
         {
-            tables.Add(new Table());
+            tables.Add(new Table(tables.Count));
             return tables.Last();
         }
     }
