@@ -29,7 +29,7 @@ namespace Restorder
             menu = new Menu();
 
             createMenu();
-
+            displayMenu();
             tableManager.getTable(0).addItem(menu.getItem("Chicken Alfredo"), "Sean");
             tableManager.getTable(0).addItem(menu.getItem("T-Bone Steak"), "Sean");
             tableManager.getTable(0).addItem(menu.getItem("Sirloin Steak"), "Yosuke");
@@ -56,6 +56,25 @@ namespace Restorder
             menu.addItems("Pasta", pastas);
             menu.addItems("Steak", steaks);
             menu.addItems("Vegitarian", veggie);
+        }
+
+        private void displayMenu()
+        {
+            foreach (string category in menu.MenuDict.Keys)
+            {
+                MenuExpander section = new MenuExpander();
+                section.Header.Text = category;
+                foreach (MenuItem item in menu.MenuDict[category])
+                {
+                    ItemButton iButton = new ItemButton();
+                    iButton.ItemName.Text = item.Name;
+                    iButton.ItemPrice.Text = item.Cost.ToString("C");
+                    section.Children.Children.Add(iButton);
+                }
+                MenuStack.Children.Add(section); 
+            }
+             
+          
         }
 
 		private void openTableManager(object sender, System.Windows.RoutedEventArgs e)

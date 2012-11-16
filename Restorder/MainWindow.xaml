@@ -48,6 +48,28 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<Style x:Key="MenuExpander" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid Background="#FFE5E5E5">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+							<Expander Header="Expander" HorizontalAlignment="Right" Margin="0,39.833,104,28.667" Width="6"/>
+							<ContentPresenter Grid.ColumnSpan="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 	</Window.Resources>
 
 	<Grid x:Name="LayoutRoot" Margin="0" Background="#FF232323" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="Height">
@@ -65,7 +87,7 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-        <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5" d:IsHidden="True">
+        <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
                 	<ScaleTransform ScaleY="1" ScaleX="1"/>
@@ -90,47 +112,10 @@
             		</TransformGroup>
             	</Button.RenderTransform>
             </Button>
-            <ScrollViewer Margin="0,66.167,237.5,241.833" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-            	<StackPanel x:Name="Menu" Background="#FF76FF3A" CanVerticallyScroll="True" Height="685" Width="528.5">
-            		<Expander x:Name="Section_1" Header="Section 1" AllowDrop="True" Padding="0,15,0,0" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" FontSize="16">
-            			<StackPanel>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            			</StackPanel>
-            		</Expander>
-            		<Expander x:Name="Section_2" Header="Section 2" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
-            			<StackPanel Width="526.5">
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            			</StackPanel>
-            		</Expander>
-            		<Expander x:Name="Section_3" Header="Section 3" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
-            			<StackPanel Width="526.5">
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            			</StackPanel>
-            		</Expander>
-            		<Expander x:Name="Section_4" Header="Section 4" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
-            			<StackPanel Width="526.5">
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            			</StackPanel>
-            		</Expander>
-            		<Expander x:Name="Section_5" Header="Section 5" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
-            			<StackPanel Width="526.5">
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            			</StackPanel>
-            		</Expander>
-            		<Expander x:Name="Section_6" Header="Section 6" HorizontalAlignment="Left" Padding="0,15,0,0" FontSize="16">
-            			<StackPanel Width="526.5">
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            				<Button Content="Button" Margin="40,0,0,0"/>
-            			</StackPanel>
-            		</Expander>
-            	</StackPanel>
+            <ScrollViewer x:Name="MenuScroll" Margin="0,66.167,237.5,241.833" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            	<StackPanel x:Name="MenuStack" Background="#FF76FF3A" CanVerticallyScroll="True" Height="685" Width="528.5"/>
             </ScrollViewer>
+            <local:SelectedItem Height="229.833" Margin="0,0,8,8" VerticalAlignment="Bottom"/>
 		</Grid>
         <Grid x:Name="TablePage" Margin="0,0,0,177" d:IsHidden="True" Visibility="Hidden">
         	<Rectangle Fill="#FF454545" Margin="0,64,0,-177" Stroke="Black"/>
