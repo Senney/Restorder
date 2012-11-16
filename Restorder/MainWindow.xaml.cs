@@ -29,6 +29,11 @@ namespace Restorder
             menu = new Menu();
 
             createMenu();
+
+            tableManager.getTable(0).addItem(menu.getItem("Chicken Alfredo"), "Sean");
+            tableManager.getTable(0).addItem(menu.getItem("T-Bone Steak"), "Sean");
+            tableManager.getTable(0).addItem(menu.getItem("Sirloin Steak"), "Yosuke");
+            setupTableBill(0);
 		}
 
         private void createMenu()
@@ -58,5 +63,26 @@ namespace Restorder
 			Button parent = (Button)sender;
 			MessageBox.Show("Table handler for " + parent.Content);
 		}
+
+        private void setupTableBill(int table)
+        {
+            Table t = tableManager.getTable(table);
+
+            // Loop over each person in the keys.
+            foreach (string person in t.Bill.Keys)
+            {
+                TextBlock personBlock = new TextBlock();
+                personBlock.Text = person;
+                this.OrderBill.Children.Add(personBlock);
+
+                // Get the items that are attributed to that person.
+                List<MenuItem> items = t.Bill[person];
+                foreach (MenuItem i in items)
+                {
+                    // Add the new item to the bill.
+                    this.OrderBill.Children.Add(new BillItemControl(i, t));
+                }
+            }
+        }
 	}
 }

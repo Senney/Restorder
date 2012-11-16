@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restorder
 {
-    class Table
+    public class Table
     {
         static double TAX = 1.05;
 
@@ -49,7 +49,11 @@ namespace Restorder
             foreach (KeyValuePair<string, List<MenuItem>> entry in tableBill)
             {
                 if (item.Equals(entry.Value))
+                {
+                    // Remove the item from the bill and subtract the cost.
                     tableBill[entry.Key].Remove(item);
+                    total -= item.Cost;
+                }
             }
         }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restorder
 {
-    class Menu
+    public class Menu
     {
         private Dictionary<string, List<MenuItem>> m_menu;
         public Dictionary<string, List<MenuItem>> MenuDict

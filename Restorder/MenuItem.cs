@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Restorder
 {
-    class MenuItem : IEquatable<MenuItem>
+    public class MenuItem : IEquatable<MenuItem>
     {
         private string itemName;
         public string Name

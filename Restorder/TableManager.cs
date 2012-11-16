@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Restorder
 {
-    class TableManager
+    public class TableManager
     {
         List<Table> tables;
 

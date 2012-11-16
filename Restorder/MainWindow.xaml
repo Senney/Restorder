@@ -76,7 +76,10 @@
             </Grid.RenderTransform>
         </Grid>
         <Grid x:Name="SelectedTable" Background="#FF0092A5">
-            <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White"/>
+            <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White">
+            	<StackPanel x:Name="OrderBill" Margin="8,8,8,111.167"/>
+            	<StackPanel x:Name="OrderTotal" Height="95.167" Margin="7.5,0,8,8" VerticalAlignment="Bottom"/>
+            </Grid>
             <Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}" Height="49.054" VerticalAlignment="Top">
             	<Button.RenderTransform>
             		<TransformGroup>
