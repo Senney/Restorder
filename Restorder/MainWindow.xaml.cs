@@ -18,23 +18,38 @@ namespace Restorder
 	public partial class MainWindow : Window
 	{
         Menu menu;
-        TableManager tableManager;
+
+        // Table management singleton.
+        private static TableManager tableManager;
 
 		public MainWindow()
 		{
 			this.InitializeComponent();
 
+            // Add 12 tables to the manager.
+            getTableManager().addTables(12);
+
             // Initialize the menu 
-            tableManager = new TableManager(12);
             menu = new Menu();
 
             createMenu();
             displayMenu();
-            tableManager.getTable(0).addItem(menu.getItem("Chicken Alfredo"), "Sean");
-            tableManager.getTable(0).addItem(menu.getItem("T-Bone Steak"), "Sean");
-            tableManager.getTable(0).addItem(menu.getItem("Sirloin Steak"), "Yosuke");
+            tableManager.setCurrentTable(0);
+            getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
             setupTableBill(0);
 		}
+
+        /// <summary>
+        /// Singleton accessor for TableManager.
+        /// </summary>
+        /// <returns>TableManager singleton.</returns>
+        public static TableManager getTableManager()
+        {
+            if (tableManager == null)
+                tableManager = new TableManager();
+
+            return tableManager;
+        }
 
         private void createMenu()
         {
@@ -66,7 +81,7 @@ namespace Restorder
                 section.Header.Text = category;
                 foreach (MenuItem item in menu.MenuDict[category])
                 {
-                    ItemButton iButton = new ItemButton();
+                    ItemButton iButton = new ItemButton(item);
                     iButton.ItemName.Text = item.Name;
                     iButton.ItemPrice.Text = item.Cost.ToString("C");
                     section.Children.Children.Add(iButton);
@@ -81,7 +96,14 @@ namespace Restorder
 		{
 			Button parent = (Button)sender;
 			MessageBox.Show("Table handler for " + parent.Content);
+            getTableManager().setCurrentTable(int.Parse((string)parent.Content));
+            getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
 		}
+
+        private void updateBill(object sender, EventArgs e)
+        {
+            this.OrderBill.Children.Add(new BillItemControl((e as BillChangeArgs).item));
+        }
 
         private void setupTableBill(int table)
         {
@@ -99,7 +121,7 @@ namespace Restorder
                 foreach (MenuItem i in items)
                 {
                     // Add the new item to the bill.
-                    this.OrderBill.Children.Add(new BillItemControl(i, t));
+                    this.OrderBill.Children.Add(new BillItemControl(i));
                 }
             }
         }

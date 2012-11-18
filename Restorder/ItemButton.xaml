@@ -13,7 +13,29 @@
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid>
-							<Rectangle Stroke="Black"/>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.5"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver">
+										<Storyboard>
+											<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+												<EasingColorKeyFrame KeyTime="0" Value="#FFFDB9B9"/>
+											</ColorAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+												<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed"/>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="VisualStateGroup"/>
+							</VisualStateManager.VisualStateGroups>
+							<Rectangle x:Name="rectangle" Stroke="Black" StrokeThickness="1.5" Fill="White" Opacity="0"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 						</Grid>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsFocused" Value="True"/>
@@ -29,9 +51,8 @@
 	</UserControl.Resources>
 
 	<Grid x:Name="LayoutRoot" Margin="0">
-		<Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,0,3,3" StrokeThickness="1.5"/>
 		<TextBlock x:Name="ItemName" Margin="3.5,-2.5,4.5,10.5" TextWrapping="Wrap" FontSize="21.333"><Run Text="Text"/></TextBlock>
-		<Button x:Name="OverlayButton" Content="utton" Style="{DynamicResource OverlayButton}" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Margin="0,0,3,3" BorderThickness="0" Opacity="0"/>
-		<TextBlock x:Name="ItemPrice" HorizontalAlignment="Right" Height="27.5" Margin="0,0,8,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="92" FontSize="16" TextAlignment="Right" RenderTransformOrigin="0.255,0.473"/>
+		<TextBlock x:Name="ItemPrice" HorizontalAlignment="Right" Height="27.5" Margin="0,0,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" FontSize="16" TextAlignment="Right" RenderTransformOrigin="0.255,0.473"><Run Text="TextBlock"/></TextBlock>
+		<Button x:Name="overlayButton" Content="" Margin="0,0,4.5,3" Style="{DynamicResource OverlayButton}" Click="overlayClick" Background="White"/>
 	</Grid>
 </UserControl>

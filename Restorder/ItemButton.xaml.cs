@@ -18,9 +18,18 @@ namespace Restorder
 	/// </summary>
 	public partial class ItemButton : UserControl
 	{
-		public ItemButton()
+        private MenuItem menuItem;
+
+		public ItemButton(MenuItem item)
 		{
 			this.InitializeComponent();
+
+            menuItem = item;
+		}
+
+		private void overlayClick(object sender, System.Windows.RoutedEventArgs e)
+		{
+            MainWindow.getTableManager().CurrentTable.addItem(menuItem);
 		}
 	}
 }

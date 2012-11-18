@@ -5,9 +5,22 @@ using System.Text;
 
 namespace Restorder
 {
+    public class BillChangeArgs : EventArgs
+    {
+        public int type;
+        public MenuItem item;
+
+        public BillChangeArgs(int t, ref MenuItem i) { type = t; item = i; }
+    }
+
+    // Handler delegate for bill changes.
+    public delegate void BillChangedEventHandler(object sender, EventArgs e);
+
     public class Table
     {
         static double TAX = 1.05;
+
+        public event BillChangedEventHandler BillChanged;
 
         private Dictionary<string, List<MenuItem>> tableBill;
         public Dictionary<string, List<MenuItem>> Bill
@@ -41,10 +54,17 @@ namespace Restorder
 
             tableBill[person].Add(item);
             total += item.Cost;
+
+            // Notify that the bill has updated.   
+            BillChangeArgs args = new BillChangeArgs(0, ref item);
+            OnBillChange(args);
         }
 
         public void removeItem(MenuItem item)
         {
+            if (item == null)
+                return;
+
             // Loop through all the entries in the dictionary and find the item that we want to remove.
             foreach (KeyValuePair<string, List<MenuItem>> entry in tableBill)
             {
@@ -85,6 +105,12 @@ namespace Restorder
             receipt += "Total:\t\t" + Total.ToString("C") + "\n";
 
             return receipt;
+        }
+
+        protected virtual void OnBillChange(EventArgs e)
+        {
+            if (BillChanged != null)
+                BillChanged(this, e);
         }
     }
 }

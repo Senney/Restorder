@@ -19,14 +19,12 @@ namespace Restorder
 	public partial class BillItemControl : UserControl
 	{
 		private MenuItem item;
-        private Table t;
 		
-		public BillItemControl(MenuItem Item, Table table)
+		public BillItemControl(MenuItem Item)
 		{
 			this.InitializeComponent();
 
             item = Item;
-            t = table;
 			
 			// Set the UI elements.
             if (item != null)
@@ -39,7 +37,7 @@ namespace Restorder
 		private void removeItem(object sender, System.Windows.RoutedEventArgs e)
 		{
             // Remove the item from the tables' bill.
-            t.removeItem(item);
+            MainWindow.getTableManager().CurrentTable.removeItem(item);
 
             // Remove this item from the stack panel.
             (this.Parent as StackPanel).Children.Remove(this);
