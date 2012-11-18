@@ -10,10 +10,10 @@
 
 	<Grid x:Name="LayoutRoot">
 		<Grid x:Name="ItemTile" Background="White">
-			<TextBlock x:Name="FoodName" HorizontalAlignment="Left" Height="48.833" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Width="241"/>
-			<TextBlock x:Name="Description" TextWrapping="Wrap" Margin="272,0,0,8"><Run Text="TextBlock"/></TextBlock>
-			<Button x:Name="Add" Content="Add Item" Height="50" Width="114" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}"/>
+			<TextBlock x:Name="FoodName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="206"/>
+			<TextBlock x:Name="Description" TextWrapping="Wrap" Margin="210,0,0,50"><Run Text="TextBlock"/></TextBlock>
+			<Button x:Name="Add" Content="Add Item" Height="46" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}"/>
 		</Grid>
-		<Image x:Name="ItemImage" HorizontalAlignment="Left" Margin="0,0,0,55.833" Width="268"/>
+		<TextBlock HorizontalAlignment="Left" Margin="8,38,0,8" TextWrapping="Wrap" Text="Ingredient List" Width="198"/>
 	</Grid>
 </UserControl>

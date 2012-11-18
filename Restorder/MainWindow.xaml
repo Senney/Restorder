@@ -99,7 +99,7 @@
         </Grid>
         <Grid x:Name="SelectedTable" Background="#FF0092A5">
             <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White">
-            	<local:OrderBillControl Margin="0,55.333,0,95.167"/>
+            	<local:OrderBillControl x:Name="OrderBill" Margin="0,55.333,0,95.167"/>
             	<StackPanel x:Name="OrderTotal" Height="83.167" Margin="7.5,0,8,8" VerticalAlignment="Bottom"/>
             	<Button Content="Add Seat" HorizontalAlignment="Left" Height="51.333" VerticalAlignment="Top" Width="109"/>
             	<Button HorizontalAlignment="Right" Height="51.333" VerticalAlignment="Top" Width="107.5" Content="Remove Seat"/>
