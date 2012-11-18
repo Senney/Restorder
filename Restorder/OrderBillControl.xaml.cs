@@ -18,9 +18,12 @@ namespace Restorder
 	/// </summary>
 	public partial class OrderBillControl : UserControl
 	{
-		public OrderBillControl()
+		public OrderBillControl(string seatName)
 		{
 			this.InitializeComponent();
+
+            this.Seat.Text = seatName;
+            this.SubTotal.Text = (0.0).ToString("C");
 		}
 	}
 }

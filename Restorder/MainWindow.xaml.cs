@@ -115,7 +115,9 @@ namespace Restorder
             BillChangeArgs a = (BillChangeArgs)e;
 
             if (a.type == 0)
+            {
                 this.OrderBill.Children.Add(new BillItemControl((e as BillChangeArgs).item));
+            }
 
             updateTotals();
         }
@@ -125,6 +127,8 @@ namespace Restorder
             this.subTotalDisplay.Text = tableManager.CurrentTable.SubTotal.ToString("C");
             this.totalDisplay.Text = tableManager.CurrentTable.Total.ToString("C");
             this.taxDisplay.Text = tableManager.CurrentTable.Tax.ToString("C");
+
+
         }
 
         private void setupTableBill(int table)
@@ -134,18 +138,24 @@ namespace Restorder
             // Loop over each person in the keys.
             foreach (string person in t.Bill.Keys)
             {
-                TextBlock personBlock = new TextBlock();
-                personBlock.Text = person;
-                this.OrderBill.Children.Add(personBlock);
+                OrderBillControl obc = new OrderBillControl(person);
 
                 // Get the items that are attributed to that person.
                 List<MenuItem> items = t.Bill[person];
+
+                double total = 0;
                 foreach (MenuItem i in items)
                 {
                     // Add the new item to the bill.
-                    this.OrderBill.Children.Add(new BillItemControl(i));
+                    obc.ItemList.Children.Add(new BillItemControl(i));
+                    total += i.Cost;
                 }
+
+                obc.SubTotal.Text = total.ToString("C");
+                this.OrderBill.Children.Add(obc);
             }
+
+            updateTotals();
         }
 	}
 }
