@@ -116,7 +116,7 @@ namespace Restorder
 
             if (a.type == 0)
             {
-                this.OrderBill.Children.Add(new BillItemControl((e as BillChangeArgs).item));
+                TableBillStack.Children.Add(new BillItemControl((e as BillChangeArgs).item));
             }
 
             updateTotals();
@@ -128,7 +128,7 @@ namespace Restorder
             this.totalDisplay.Text = tableManager.CurrentTable.Total.ToString("C");
             this.taxDisplay.Text = tableManager.CurrentTable.Tax.ToString("C");
 
-
+            
         }
 
         private void setupTableBill(int table)
@@ -152,7 +152,7 @@ namespace Restorder
                 }
 
                 obc.SubTotal.Text = total.ToString("C");
-                this.OrderBill.Children.Add(obc);
+                this.TableBillStack.Children.Add(obc);
             }
 
             updateTotals();
