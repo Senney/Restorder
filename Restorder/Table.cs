@@ -41,6 +41,13 @@ namespace Restorder
             get { return total * TAX; }
         }
 
+        public double Tax
+        {
+            get { return total * (TAX - 1.0); }
+        }
+
+        static int id = 0;
+
         public Table(int tableid)
         {
             this.tableID = tableid;
@@ -52,6 +59,8 @@ namespace Restorder
             if (!tableBill.ContainsKey(person))
                 tableBill[person] = new List<MenuItem>();
 
+            // Set the ID.
+            item.ID = id++;
             tableBill[person].Add(item);
             total += item.Cost;
 
@@ -68,11 +77,17 @@ namespace Restorder
             // Loop through all the entries in the dictionary and find the item that we want to remove.
             foreach (KeyValuePair<string, List<MenuItem>> entry in tableBill)
             {
-                if (item.Equals(entry.Value))
+                for (int i = 0; i < entry.Value.Count; i++)
                 {
-                    // Remove the item from the bill and subtract the cost.
-                    tableBill[entry.Key].Remove(item);
-                    total -= item.Cost;
+                    MenuItem eItem = entry.Value[i];
+                    if (item.Equals(eItem))
+                    {
+                        tableBill[entry.Key].Remove(item);
+                        total -= item.Cost;
+
+                        OnBillChange(new BillChangeArgs(1, ref item));
+                        return;
+                    }
                 }
             }
         }

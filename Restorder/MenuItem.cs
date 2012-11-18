@@ -35,6 +35,13 @@ namespace Restorder
             get { return itemPicture; }
         }
 
+        private int m_id;
+        public int ID
+        {
+            get { return m_id; }
+            set { m_id = value; }
+        }
+
         public MenuItem(string name, double cost, string picture = null, string[] ingredients = null)
         {
             this.itemName = name;
@@ -57,7 +64,7 @@ namespace Restorder
 
         public bool Equals(MenuItem other)
         {
-            return (other.Name == this.Name && other.Cost == this.Cost);
+            return (other.Name == this.Name && other.Cost == this.Cost && other.ID == this.ID);
         }
     }
 }

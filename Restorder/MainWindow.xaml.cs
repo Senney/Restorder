@@ -35,6 +35,7 @@ namespace Restorder
             createMenu();
             displayMenu();
             tableManager.setCurrentTable(0);
+
             getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
             setupTableBill(0);
 		}
@@ -102,7 +103,19 @@ namespace Restorder
 
         private void updateBill(object sender, EventArgs e)
         {
-            this.OrderBill.Children.Add(new BillItemControl((e as BillChangeArgs).item));
+            BillChangeArgs a = (BillChangeArgs)e;
+
+            if (a.type == 0)
+                this.OrderBill.Children.Add(new BillItemControl((e as BillChangeArgs).item));
+
+            updateTotals();
+        }
+
+        private void updateTotals()
+        {
+            this.subTotalDisplay.Text = tableManager.CurrentTable.SubTotal.ToString("C");
+            this.totalDisplay.Text = tableManager.CurrentTable.Total.ToString("C");
+            this.taxDisplay.Text = tableManager.CurrentTable.Tax.ToString("C");
         }
 
         private void setupTableBill(int table)
