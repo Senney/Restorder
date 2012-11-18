@@ -99,10 +99,11 @@
         </Grid>
         <Grid x:Name="SelectedTable" Background="#FF0092A5">
             <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White">
-            	<local:OrderBillControl x:Name="OrderBill" Margin="0,55.333,0,95.167"/>
+            	<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            		<StackPanel x:Name="TableBillStack" Height="543" Width="233.5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            	</ScrollViewer>
             	<StackPanel x:Name="OrderTotal" Height="83.167" Margin="7.5,0,8,8" VerticalAlignment="Bottom"/>
-            	<Button Content="Add Seat" HorizontalAlignment="Left" Height="51.333" VerticalAlignment="Top" Width="109"/>
-            	<Button HorizontalAlignment="Right" Height="51.333" VerticalAlignment="Top" Width="107.5" Content="Remove Seat"/>
+            	<Button x:Name="AddSeat" Content="Add Seat" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="90"/>
             </Grid>
             <Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}" Height="49.054" VerticalAlignment="Top">
             	<Button.RenderTransform>

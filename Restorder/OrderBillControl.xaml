@@ -9,12 +9,11 @@
 	d:DesignWidth="233.5" d:DesignHeight="573.833">
 
 	<Grid x:Name="LayoutRoot">
-		<ScrollViewer x:Name="OrderBill" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="-2,0,-0.5,-0.167" d:LayoutOverrides="HorizontalMargin">
-			<Grid x:Name="BillGrid" Height="574" Width="236">
-				<TextBlock x:Name="Seat" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="8,0,93,0" Text="Seat Number"/>
-				<TextBlock x:Name="SubTotal" Height="40" TextWrapping="Wrap" Text="Subtotal" VerticalAlignment="Top" HorizontalAlignment="Right" Width="89"/>
-				<StackPanel x:Name="ItemList" Margin="2,44,0,0"/>
-			</Grid>
-		</ScrollViewer>
+		<Grid x:Name="SeatBillGrid" Margin="0,0,-2.5,-0.167" d:LayoutOverrides="Width, Height">
+			<TextBlock x:Name="Seat" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="8,0,93,0" Text="Seat Number" FontSize="16"/>
+			<TextBlock x:Name="SubTotal" Height="40" TextWrapping="Wrap" Text="Subtotal" VerticalAlignment="Top" HorizontalAlignment="Right" Width="89" FontSize="16"/>
+			<StackPanel x:Name="ItemList" Margin="2,44,0,58"/>
+			<Button x:Name="RemoveTable" Content="RemoveSeat" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90"/>
+		</Grid>
 	</Grid>
 </UserControl>
