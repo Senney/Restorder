@@ -34,10 +34,15 @@ namespace Restorder
 
             createMenu();
             displayMenu();
+            updateItemDescription(menu.getItem("Chicken Alfredo"));
+            tableManager.getTable(0).addItem(menu.getItem("Chicken Alfredo"), "Sean");
+            tableManager.getTable(0).addItem(menu.getItem("T-Bone Steak"), "Sean");
+            tableManager.getTable(0).addItem(menu.getItem("Sirloin Steak"), "Yosuke");
             tableManager.setCurrentTable(0);
 
             getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
             setupTableBill(0);
+
 		}
 
         /// <summary>
@@ -87,10 +92,14 @@ namespace Restorder
                     iButton.ItemPrice.Text = item.Cost.ToString("C");
                     section.Children.Children.Add(iButton);
                 }
-                MenuStack.Children.Add(section); 
+                MenuStack.Children.Add(section);
             }
              
-          
+        }
+
+        private void updateItemDescription(MenuItem item)
+        {
+            ItemDetail.FoodName.Text = item.Name;
         }
 
 		private void openTableManager(object sender, System.Windows.RoutedEventArgs e)

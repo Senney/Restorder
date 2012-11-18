@@ -70,6 +70,9 @@
       <DependentUpon>MenuExpander.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuItem.cs" />
+    <Compile Include="OrderBillControl.xaml.cs">
+      <DependentUpon>OrderBillControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectedItem.xaml.cs">
       <DependentUpon>SelectedItem.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MenuExpander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrderBillControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
