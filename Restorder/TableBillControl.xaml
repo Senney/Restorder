@@ -1,0 +1,18 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Restorder.TableBillControl"
+	x:Name="UserControl"
+	d:DesignWidth="226.5" d:DesignHeight="546">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid x:Name="TableBillGrid">
+			<StackPanel x:Name="TableItemList" Margin="1,59,0.5,-1"/>
+			<TextBlock x:Name="TableNumber" HorizontalAlignment="Left" Height="40" Margin="8,0,93,0" TextWrapping="Wrap" Text="Table#" VerticalAlignment="Top" Width="135" FontSize="16"/>
+			<TextBlock x:Name="SubTotal" HorizontalAlignment="Right" Height="40" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" FontSize="16"><Run Text="SubTotal"/><LineBreak/><Run/></TextBlock>
+		</Grid>
+	</Grid>
+</UserControl>
