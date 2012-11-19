@@ -54,7 +54,6 @@ namespace Restorder
 					return;
 	
 				BillItemControl.Selected.Remove();
-				MainWindow.getTableManager().CurrentTable.removeItem(item);
 				MainWindow.getTableManager().CurrentTable.addItem(item, name);
 			}
 			else 
@@ -92,6 +91,8 @@ namespace Restorder
                 MainWindow.getTableManager().CurrentTable.removeItem(bic.Item);
                 MainWindow.getTableManager().CurrentTable.addItem(bic.Item, newName);
             }
+
+            MainWindow.getTableManager().CurrentTable.Bill.Remove(this.Seat.Text);
 
             // Clear and remove old data.
             this.SeatBillGrid.Children.Clear();

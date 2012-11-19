@@ -101,7 +101,9 @@
             <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White">
                 <Button x:Name="AddSeat" Content="Add Seat" HorizontalAlignment="Left" Height="51.333" VerticalAlignment="Top" Width="109" Click="addSeat"/>
             	<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanContentScroll="True">
-            		<StackPanel x:Name="TableBillStack" Height="543" Width="233.5"/>
+            		<DockPanel>					
+            			<StackPanel x:Name="TableBillStack" Width="233.5"/>
+					</DockPanel>
             	</ScrollViewer>
                 <Grid x:Name="OrderTotal" Height="78.667" Margin="7.5,0,8,8" VerticalAlignment="Bottom">
                     <TextBlock Height="18" Margin="8,8,0,0" TextWrapping="Wrap" Text="Sub-Total:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73.333" TextAlignment="Right" FontSize="16"/>
@@ -127,7 +129,7 @@
             </ScrollViewer>
             <local:SelectedItem x:Name="ItemDetail" Height="229.833" Margin="0,0,0,8" VerticalAlignment="Bottom"/>
 		</Grid>
-        <Grid x:Name="TablePage" Margin="0,0,0,177">
+        <Grid x:Name="TablePage" Margin="0,0,0,177" d:IsHidden="True">
         	<Rectangle Fill="#FF454545" Margin="0,64,0,-177" Stroke="Black"/>
         	<Grid x:Name="Section1" Margin="0,64,0,105" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="GridBox">
         		<Grid.RenderTransform>
