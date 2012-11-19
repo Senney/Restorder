@@ -77,6 +77,9 @@
       <DependentUpon>SelectedItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Table.cs" />
+    <Compile Include="TableBillControl.xaml.cs">
+      <DependentUpon>TableBillControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TableManager.cs" />
     <Page Include="ItemButton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +110,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SelectedItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TableBillControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
