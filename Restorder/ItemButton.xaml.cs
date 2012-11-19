@@ -27,9 +27,28 @@ namespace Restorder
             menuItem = item;
 		}
 
+        public void reset()
+        {
+            this.bgRect.Fill = new SolidColorBrush(Color.FromRgb(244, 244, 245));
+        }
+
 		private void overlayClick(object sender, System.Windows.RoutedEventArgs e)
 		{
-            MainWindow.getTableManager().CurrentTable.addItem(menuItem);
+            // Check if the current button has been pressed.
+            if (MainWindow.selectedButton == this)
+            {
+                MainWindow.getTableManager().CurrentTable.addItem(menuItem);
+                this.reset();
+                MainWindow.selectedButton = null;
+            }
+            else
+            {
+                if (MainWindow.selectedButton != null)
+                    MainWindow.selectedButton.reset();
+                MainWindow.selectedButton = this;
+                MainWindow.selectedItem.setItem(menuItem);
+                this.bgRect.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 32));
+            }
 		}
 	}
 }

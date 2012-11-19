@@ -22,6 +22,12 @@ namespace Restorder
 
         public event BillChangedEventHandler BillChanged;
 
+        private Dictionary<string, OrderBillControl> seatControls;
+        public Dictionary<string, OrderBillControl> SeatControls
+        {
+            get { return seatControls; }
+        }
+
         private Dictionary<string, List<MenuItem>> tableBill;
         public Dictionary<string, List<MenuItem>> Bill
         {
@@ -52,6 +58,7 @@ namespace Restorder
         {
             this.tableID = tableid;
             this.tableBill = new Dictionary<string,List<MenuItem>>();
+            this.seatControls = new Dictionary<string, OrderBillControl>();
         }
 
         public void addItem(MenuItem item, string person = "Table")

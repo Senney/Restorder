@@ -22,5 +22,11 @@ namespace Restorder
 		{
 			this.InitializeComponent();
 		}
+
+        public void setItem(MenuItem item)
+        {
+            this.FoodName.Text = item.Name;
+            this.Description.Text = "BLAH BLAH";
+        }
 	}
 }

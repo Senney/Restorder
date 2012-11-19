@@ -21,6 +21,8 @@ namespace Restorder
 
         // Table management singleton.
         private static TableManager tableManager;
+        public static ItemButton selectedButton = null;
+        public static SelectedItem selectedItem;
 
 		public MainWindow()
 		{
@@ -28,6 +30,8 @@ namespace Restorder
 
             // Add 12 tables to the manager.
             getTableManager().addTables(12);
+
+            MainWindow.selectedItem = ItemDetail;
 
             // Initialize the menu 
             menu = new Menu();
@@ -90,6 +94,7 @@ namespace Restorder
                     ItemButton iButton = new ItemButton(item);
                     iButton.ItemName.Text = item.Name;
                     iButton.ItemPrice.Text = item.Cost.ToString("C");
+
                     section.Children.Children.Add(iButton);
                 }
                 MenuStack.Children.Add(section);
@@ -128,11 +133,23 @@ namespace Restorder
             this.totalDisplay.Text = tableManager.CurrentTable.Total.ToString("C");
             this.taxDisplay.Text = tableManager.CurrentTable.Tax.ToString("C");
 
-            
+            foreach (KeyValuePair<string, OrderBillControl> entry in tableManager.CurrentTable.SeatControls)
+            {
+                double val = 0.0;
+                foreach (MenuItem i in tableManager.CurrentTable.Bill[entry.Key])
+                {
+                    val += i.Cost;
+                }
+                entry.Value.SubTotal.Text = val.ToString("C");
+            }
         }
 
         private void setupTableBill(int table)
         {
+            // Remove all children.
+            this.TableBillStack.Children.Clear();
+
+            // Get the table that we want to set up.
             Table t = tableManager.getTable(table);
 
             // Loop over each person in the keys.
@@ -153,6 +170,7 @@ namespace Restorder
 
                 obc.SubTotal.Text = total.ToString("C");
                 this.TableBillStack.Children.Add(obc);
+                t.SeatControls.Add(person, obc);
             }
 
             updateTotals();
