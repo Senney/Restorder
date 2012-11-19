@@ -100,19 +100,17 @@
         <Grid x:Name="SelectedTable" Background="#FF0092A5">
             <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White">
                 <Button x:Name="AddSeat" Content="Add Seat" HorizontalAlignment="Left" Height="51.333" VerticalAlignment="Top" Width="109"/>
-            	<Button HorizontalAlignment="Right" Height="51.333" VerticalAlignment="Top" Width="107.5" Content="Remove Seat"/>
-            	<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-            		<StackPanel x:Name="TableBillStack" Height="543" Width="233.5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            	<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanContentScroll="True">
+            		<StackPanel x:Name="TableBillStack" Height="543" Width="233.5"/>
             	</ScrollViewer>
-                <Grid x:Name="OrderTotal" Height="95.167" Margin="7.5,0,8,8" VerticalAlignment="Bottom">
+                <Grid x:Name="OrderTotal" Height="78.667" Margin="7.5,0,8,8" VerticalAlignment="Bottom">
                     <TextBlock Height="18" Margin="8,8,0,0" TextWrapping="Wrap" Text="Sub-Total:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73.333" TextAlignment="Right" FontSize="16"/>
-                    <TextBlock Margin="21.333,30,0,47.167" TextWrapping="Wrap" Text="Tax:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16"/>
-                    <TextBlock Margin="21.333,0,0,25.167" TextWrapping="Wrap" Text="Total:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16" Height="18" VerticalAlignment="Bottom"/>
+                    <TextBlock Margin="21.333,30,0,30.667" TextWrapping="Wrap" Text="Tax:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16"/>
+                    <TextBlock Margin="21.333,0,0,8.667" TextWrapping="Wrap" Text="Total:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16" Height="18" VerticalAlignment="Bottom"/>
                     <TextBlock x:Name="subTotalDisplay" Height="18" Margin="0,8,34.001,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Right" Width="73.333" Text="$0.00"/>
-                    <TextBlock x:Name="taxDisplay" Margin="0,30,47.334,47.167" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
-                    <TextBlock x:Name="totalDisplay" Margin="0,0,47.334,25.167" TextWrapping="Wrap" FontSize="16" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
+                    <TextBlock x:Name="taxDisplay" Margin="0,30,47.334,30.667" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
+                    <TextBlock x:Name="totalDisplay" Margin="0,0,47.334,8.667" TextWrapping="Wrap" FontSize="16" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
                 </Grid>
-                <Button x:Name="AddSeat" Content="Add Seat" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="90"/>
             </Grid>
             <Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}" Height="49.054" VerticalAlignment="Top">
             	<Button.RenderTransform>
