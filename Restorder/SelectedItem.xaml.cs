@@ -27,6 +27,13 @@ namespace Restorder
         {
             this.FoodName.Text = item.Name;
             this.Description.Text = item.Descriptor;
+            this.itemPrice.Text = item.Cost.ToString("C");
+           
+            this.ingredients.Text = "Ingredients\n";
+            foreach (string ing in item.Ingredients)
+            {
+                this.ingredients.Text += ing + "\n";
+            }
         }
 
         private void addToOrder(object sender, System.Windows.RoutedEventArgs e)

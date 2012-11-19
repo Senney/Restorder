@@ -59,24 +59,57 @@ namespace Restorder
 
         private void createMenu()
         {
-            List<MenuItem> pastas = new List<MenuItem>();
-            pastas.Add(new MenuItem("Chicken Alfredo", 8.99));
-            pastas.Add(new MenuItem("Seafood Pasta", 11.45));
-            pastas.Add(new MenuItem("Ravioli", 10.50));
-            pastas.Add(new MenuItem("Lasagna", 8.99));
+            List<MenuItem> appetizers = new List<MenuItem>()
+            {
+                new MenuItem("Calamari", 8.99, "Deep fried squids and octopii", new string[] { "Squid", "Octopus" }),
+                new MenuItem("Wings", 11.99, "1 pound of wings in a variety of flavors.\nMild, Hot, Suicide, Honey Garlic, Salt and Pepper, Lemon Pepper, BBQ", new string[] { "Chicken", "Various sauces" } ),
+                new MenuItem("Nachos", 7.99, "Chips, cheese and jalapenos.", new string[] { "Tortilla Chips", "Cheese", "Salsa", "Jalapeno Peppers" })
+            };
 
-            List<MenuItem> steaks = new List<MenuItem>();
-            steaks.Add(new MenuItem("T-Bone Steak", 24.99));
-            steaks.Add(new MenuItem("Sirloin Steak", 20.99));
+            List<MenuItem> pastas = new List<MenuItem>()
+            {
+                new MenuItem("Chicken Alfredo", 8.99, "Chicken, linguini noodles, and alfredo sauce all mixed to create something beautiful.", new string[] { "Chicken", "Alfredo Sauce", "Linguini Noodles" }),
+                new MenuItem("Seafood Pasta", 11.45),
+                new MenuItem("Ravioli", 10.50),
+                new MenuItem("Lasagna", 8.99)
+            };
 
-            List<MenuItem> veggie = new List<MenuItem>();
-            veggie.Add(new MenuItem("Garden Salad", 7.50));
-            veggie.Add(new MenuItem("Caesar Salad", 8.50));
-            veggie.Add(new MenuItem("Tofu Explosion", 10.99));
+            List<MenuItem> steaks = new List<MenuItem>()
+            {
+                new MenuItem("T-Bone Steak", 24.99),
+                new MenuItem("Sirloin Steak", 20.99)
+            };
 
+            List<MenuItem> veggie = new List<MenuItem>()
+            {
+                new MenuItem("Garden Salad", 7.50),
+                new MenuItem("Caesar Salad", 8.50),
+                new MenuItem("Tofu Explosion", 10.99)
+            };
+
+            List<MenuItem> drinks = new List<MenuItem>()
+            {
+                new MenuItem("Coke", 1.99, "Coca-Cola"),
+                new MenuItem("Sprite", 1.99, "Sprite"),
+                new MenuItem("Diet Coke", 1.99, "Sugar-Free Coca-Cola"),
+                new MenuItem("Root Beer", 1.99, "Caffeine Free"),
+                new MenuItem("Coffee", 1.60, "Hot and fresh!"),
+                new MenuItem("Tea", 1.20, "Earl Grey, Red Rose, Mango Passionfruit, Green")
+            };
+
+            List<MenuItem> alcoholic = new List<MenuItem>()
+            {
+                new MenuItem("Tony Tang", 4.50, "Tang fruit punch with a shot of vodka and a lime."),
+                new MenuItem("The Bon-Bon", 4.50, "Candy flavored and delicious. Melon Bols, Sprite, Grenadine, Vodka"),
+                new MenuItem("Teddy Beer", 3.99, "Microbrewed beer fresh from the Himalayas.")
+            };
+
+            menu.addItems("Appetizers", appetizers);
             menu.addItems("Pasta", pastas);
             menu.addItems("Steak", steaks);
-            menu.addItems("Vegitarian", veggie);
+            menu.addItems("Vegetarian", veggie);
+            menu.addItems("Beverages", drinks);
+            menu.addItems("Alcoholic", alcoholic);
         }
 
         private void displayMenu()

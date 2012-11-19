@@ -35,7 +35,7 @@
 			<TextBlock x:Name="Seat" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="8,0,93,0" Text="Seat Number" FontSize="16"/>
 			<TextBlock x:Name="SubTotal" Height="40" TextWrapping="Wrap" Text="Subtotal" VerticalAlignment="Top" HorizontalAlignment="Right" Width="89" FontSize="16"/>
 			<StackPanel x:Name="ItemList" Margin="2,44,0,58"/>
-			<Button x:Name="RemoveTable" Content="Remove Seat" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" Click="removeSeat"/>
+			<Button x:Name="RemoveTable" Content="Remove Seat" Height="33.5" VerticalAlignment="Bottom" Click="removeSeat" Margin="0.333,0,-0.333,14"/>
 			<Button x:Name="DescBarButton" Height="30" Margin="0.333,0,2.667,0" Style="{DynamicResource OrderBillButton}" VerticalAlignment="Top" Click="handleClick"/>
 		</Grid>
 	</Grid>

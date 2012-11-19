@@ -10,10 +10,11 @@
 
 	<Grid x:Name="LayoutRoot">
 		<Grid x:Name="ItemTile" Background="White">
-			<TextBlock x:Name="FoodName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="206"/>
-			<TextBlock x:Name="Description" TextWrapping="Wrap" Margin="210,0,0,50"><Run Text="TextBlock"/></TextBlock>
+			<TextBlock x:Name="FoodName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="Selected Item" VerticalAlignment="Top" Width="206" FontSize="21.333" FontWeight="Bold" Margin="5,0,0,0"/>
+			<TextBlock x:Name="Description" TextWrapping="Wrap" Margin="210,8,8,50" Text="Item description" FontSize="16"/>
 			<Button x:Name="Add" Content="Add Item" Height="46" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}" Click="addToOrder"/>
+			<TextBlock x:Name="itemPrice" HorizontalAlignment="Right" Height="24" Margin="0,0,106,8" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Bottom" Width="120" FontSize="18.667" FontWeight="Bold"/>
+			<TextBlock x:Name="ingredients" HorizontalAlignment="Left" Margin="8,38,0,8" TextWrapping="Wrap" Text="Item Ingredients" Width="198" FontSize="16" FontWeight="Bold"/>
 		</Grid>
-		<TextBlock HorizontalAlignment="Left" Margin="8,38,0,8" TextWrapping="Wrap" Text="Ingredient List" Width="198"/>
 	</Grid>
 </UserControl>

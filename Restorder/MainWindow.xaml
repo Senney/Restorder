@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Restorder" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="Restorder.MainWindow"
 	x:Name="Window"
-	Title="Restorder Ordering System" Height="1021" Width="768" ResizeMode="NoResize">
+	Title="Restorder Ordering System" Height="945" Width="768" ResizeMode="NoResize" Left="300" Top="30">
 	<Window.Resources>
 		<Style x:Key="TableButtonStyle" TargetType="{x:Type Button}">
 			<Setter Property="Template">
@@ -87,33 +87,23 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-        <Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                	<ScaleTransform ScaleY="1" ScaleX="1"/>
-                	<SkewTransform AngleY="0" AngleX="0"/>
-                	<RotateTransform Angle="0"/>
-                	<TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-        </Grid>
-        <Grid x:Name="SelectedTable" Background="#FF0092A5">
-            <Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,241.833" Background="White">
-                <Button x:Name="AddSeat" Content="Add Seat" HorizontalAlignment="Left" Height="51.333" VerticalAlignment="Top" Width="109" Click="addSeat"/>
-            	<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanContentScroll="True">
-            		<DockPanel>					
-            			<StackPanel x:Name="TableBillStack" Width="233.5"/>
-					</DockPanel>
-            	</ScrollViewer>
-                <Grid x:Name="OrderTotal" Height="78.667" Margin="7.5,0,8,8" VerticalAlignment="Bottom">
-                    <TextBlock Height="18" Margin="8,8,0,0" TextWrapping="Wrap" Text="Sub-Total:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73.333" TextAlignment="Right" FontSize="16"/>
-                    <TextBlock Margin="21.333,30,0,30.667" TextWrapping="Wrap" Text="Tax:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16"/>
-                    <TextBlock Margin="21.333,0,0,8.667" TextWrapping="Wrap" Text="Total:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16" Height="18" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="subTotalDisplay" Height="18" Margin="0,8,34.001,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Right" Width="73.333" Text="$0.00"/>
-                    <TextBlock x:Name="taxDisplay" Margin="0,30,47.334,30.667" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
-                    <TextBlock x:Name="totalDisplay" Margin="0,0,47.334,8.667" TextWrapping="Wrap" FontSize="16" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
-                </Grid>
-            </Grid>
+        <Grid x:Name="SelectedTable" Background="#FF0092A5" d:IsHidden="True">
+        	<Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,165.833" Background="White">
+        		<Button x:Name="AddSeat" Content="Add Seat" Height="45.833" VerticalAlignment="Top" Click="addSeat"/>
+        		<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanContentScroll="True">
+        			<DockPanel x:Name="StackContainer">					
+        				<StackPanel x:Name="TableBillStack" Width="233.5"/>
+        			</DockPanel>
+        		</ScrollViewer>
+        		<Grid x:Name="OrderTotal" Height="78.667" Margin="7.5,0,8,8" VerticalAlignment="Bottom">
+        			<TextBlock Height="18" Margin="8,8,0,0" TextWrapping="Wrap" Text="Sub-Total:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73.333" TextAlignment="Right" FontSize="16"/>
+        			<TextBlock Margin="21.333,30,0,30.667" TextWrapping="Wrap" Text="Tax:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16"/>
+        			<TextBlock Margin="21.333,0,0,8.667" TextWrapping="Wrap" Text="Total:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16" Height="18" VerticalAlignment="Bottom"/>
+        			<TextBlock x:Name="subTotalDisplay" Height="18" Margin="0,8,34.001,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Right" Width="73.333" Text="$0.00"/>
+        			<TextBlock x:Name="taxDisplay" Margin="0,30,47.334,30.667" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
+        			<TextBlock x:Name="totalDisplay" Margin="0,0,47.334,8.667" TextWrapping="Wrap" FontSize="16" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" Text="$0.00"/>
+        		</Grid>
+        	</Grid>
             <Button x:Name="BackToLayout" Content="&lt;" Margin="13.923,8.886,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="51.649" FontSize="21.333" Background="{x:Null}" Height="49.054" VerticalAlignment="Top" Click="backButton">
             	<Button.RenderTransform>
             		<TransformGroup>
@@ -124,13 +114,15 @@
             		</TransformGroup>
             	</Button.RenderTransform>
             </Button>
-            <ScrollViewer x:Name="MenuScroll" Margin="0,66.167,237.5,241.833" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-            	<StackPanel x:Name="MenuStack" Background="#FF76FF3A" CanVerticallyScroll="True" Height="685" Width="528.5"/>
-            </ScrollViewer>
-            <local:SelectedItem x:Name="ItemDetail" Height="229.833" Margin="0,0,0,8" VerticalAlignment="Bottom"/>
+        	<ScrollViewer x:Name="MenuScroll" Margin="0,66.167,237.5,165.833" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        		<DockPanel>
+        			<StackPanel x:Name="MenuStack" Background="#FF76FF3A" CanVerticallyScroll="True" Width="528.5"/>
+        		</DockPanel>
+        	</ScrollViewer>
+            <local:SelectedItem x:Name="ItemDetail" Height="161.833" VerticalAlignment="Bottom"/>
 		</Grid>
-        <Grid x:Name="TablePage" Margin="0,0,0,177" d:IsHidden="True">
-        	<Rectangle Fill="#FF454545" Margin="0,64,0,-177" Stroke="Black"/>
+        <Grid x:Name="TablePage" Margin="0,0,0,101" d:IsHidden="True">
+        	<Rectangle Fill="#FF454545" Margin="0,64,0,-104" Stroke="Black"/>
         	<Grid x:Name="Section1" Margin="0,64,0,105" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="GridBox">
         		<Grid.RenderTransform>
         			<TransformGroup>
@@ -164,6 +156,17 @@
         		<Button Content="12" Margin="0,0,85.5,8" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager" RenderTransformOrigin="1.067,0.8" Height="90" VerticalAlignment="Bottom"/>
         		<Button Content="9" Margin="256,96,0,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Left" Width="90" Click="openTableManager"/>
         		<Button Content="10" Margin="0,96,248,90" Style="{DynamicResource TableButtonStyle}" HorizontalAlignment="Right" Width="90" Click="openTableManager"/>
+        	</Grid>
+        	<Grid x:Name="Header" Height="65.5" VerticalAlignment="Top" Background="#FFD81D1D" RenderTransformOrigin="0.5,0.5">
+        		<Grid.RenderTransform>
+        			<TransformGroup>
+        				<ScaleTransform ScaleY="1" ScaleX="1"/>
+        				<SkewTransform AngleY="0" AngleX="0"/>
+        				<RotateTransform Angle="0"/>
+        				<TranslateTransform/>
+        			</TransformGroup>
+        		</Grid.RenderTransform>
+        		<TextBlock Margin="79,2,80,7.5" TextWrapping="Wrap" Text="Kenny's Family Restaurant" FontSize="48" Background="#00000000" Foreground="White" FontWeight="Bold" TextAlignment="Center"/>
         	</Grid>
         </Grid>
     </Grid>

@@ -29,14 +29,11 @@ namespace Restorder
             get { return itemIngredients; }
         }
 
-        private Image itemPicture;
-        public Image Picture
-        {
-            get { return itemPicture; }
-        }
-
         private string itemDesc;
-        public string Descriptor;
+        public string Descriptor
+        {
+            get { return itemDesc; }
+        }
 
         private int m_id;
         public int ID
@@ -45,19 +42,11 @@ namespace Restorder
             set { m_id = value; }
         }
 
-        public MenuItem(string name, double cost, string desc = "", string picture = null, string[] ingredients = null)
+        public MenuItem(string name, double cost, string desc = "", string[] ingredients = null)
         {
             this.itemName = name;
             this.itemCost = cost;
             this.itemDesc = desc;
-
-            if (picture != null)
-            {
-                if (System.IO.File.Exists(picture))
-                    this.itemPicture = Image.FromFile(picture);
-                else
-                    throw new System.IO.FileNotFoundException("Could not locate image: " + picture);
-            }
 
             this.itemIngredients = new List<string>();
 
