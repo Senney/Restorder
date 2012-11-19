@@ -20,13 +20,22 @@ namespace Restorder
 	{
 		public SelectedItem()
 		{
-			this.InitializeComponent();
+            this.InitializeComponent();
 		}
 
         public void setItem(MenuItem item)
         {
             this.FoodName.Text = item.Name;
-            this.Description.Text = "BLAH BLAH";
+            this.Description.Text = item.Descriptor;
+        }
+
+        private void addToOrder(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (MainWindow.selectedButton != null)
+            {
+                MainWindow.selectedButton.addToOrder();
+                MainWindow.selectedButton.reset();
+            }
         }
 	}
 }

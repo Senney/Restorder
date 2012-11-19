@@ -23,6 +23,9 @@ namespace Restorder
         private static TableManager tableManager;
         public static ItemButton selectedButton = null;
         public static SelectedItem selectedItem;
+        public static string selectedSeat = "Table";
+
+        private int seatID;
 
 		public MainWindow()
 		{
@@ -31,22 +34,15 @@ namespace Restorder
             // Add 12 tables to the manager.
             getTableManager().addTables(12);
 
+            // Setup the item detail singleton.
             MainWindow.selectedItem = ItemDetail;
+
+            // Set the initial seat id.
+            seatID = 1;
 
             // Initialize the menu 
             menu = new Menu();
-
             createMenu();
-            displayMenu();
-            updateItemDescription(menu.getItem("Chicken Alfredo"));
-            tableManager.getTable(0).addItem(menu.getItem("Chicken Alfredo"), "Sean");
-            tableManager.getTable(0).addItem(menu.getItem("T-Bone Steak"), "Sean");
-            tableManager.getTable(0).addItem(menu.getItem("Sirloin Steak"), "Yosuke");
-            tableManager.setCurrentTable(0);
-
-            getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
-            setupTableBill(0);
-
 		}
 
         /// <summary>
@@ -85,6 +81,8 @@ namespace Restorder
 
         private void displayMenu()
         {
+            // Clear the old children.
+            MenuStack.Children.Clear();
             foreach (string category in menu.MenuDict.Keys)
             {
                 MenuExpander section = new MenuExpander();
@@ -110,9 +108,19 @@ namespace Restorder
 		private void openTableManager(object sender, System.Windows.RoutedEventArgs e)
 		{
 			Button parent = (Button)sender;
-			MessageBox.Show("Table handler for " + parent.Content);
+
+            this.TablePage.Visibility = System.Windows.Visibility.Hidden;
+            this.SelectedTable.Visibility = System.Windows.Visibility.Visible;
             getTableManager().setCurrentTable(int.Parse((string)parent.Content));
-            getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
+
+            if (!getTableManager().CurrentTable.HasHandler)
+            {
+                getTableManager().CurrentTable.BillChanged += new BillChangedEventHandler(updateBill);
+                getTableManager().CurrentTable.HasHandler = true;
+            }
+
+            displayMenu();
+            setupTableBill(int.Parse((string)parent.Content));
 		}
 
         private void updateBill(object sender, EventArgs e)
@@ -121,7 +129,7 @@ namespace Restorder
 
             if (a.type == 0)
             {
-                TableBillStack.Children.Add(new BillItemControl((e as BillChangeArgs).item));
+                tableManager.CurrentTable.SeatControls[a.seat].ItemList.Children.Add(new BillItemControl(a.item));
             }
 
             updateTotals();
@@ -136,9 +144,14 @@ namespace Restorder
             foreach (KeyValuePair<string, OrderBillControl> entry in tableManager.CurrentTable.SeatControls)
             {
                 double val = 0.0;
-                foreach (MenuItem i in tableManager.CurrentTable.Bill[entry.Key])
+
+                if (tableManager.CurrentTable.Bill.ContainsKey(entry.Key))
                 {
-                    val += i.Cost;
+                    List<MenuItem> items = tableManager.CurrentTable.Bill[entry.Key];
+                    foreach (MenuItem i in items)
+                    {
+                        val += i.Cost;
+                    }
                 }
                 entry.Value.SubTotal.Text = val.ToString("C");
             }
@@ -151,6 +164,15 @@ namespace Restorder
 
             // Get the table that we want to set up.
             Table t = tableManager.getTable(table);
+            t.SeatControls.Clear();
+
+            // Create seat for table.
+            if (!t.Bill.ContainsKey("Table")) 
+            {
+                OrderBillControl tbc = new OrderBillControl("Table");
+                this.TableBillStack.Children.Add(tbc);
+                t.SeatControls.Add("Table", tbc);
+            }
 
             // Loop over each person in the keys.
             foreach (string person in t.Bill.Keys)
@@ -174,6 +196,21 @@ namespace Restorder
             }
 
             updateTotals();
+        }
+
+        private void addSeat(object sender, System.Windows.RoutedEventArgs e)
+        {
+            string seatName = "Seat " + (seatID++).ToString();
+            OrderBillControl obc = new OrderBillControl(seatName);
+
+            this.TableBillStack.Children.Add(obc);
+            tableManager.CurrentTable.SeatControls.Add(seatName, obc);
+        }
+
+        private void backButton(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.TablePage.Visibility = System.Windows.Visibility.Visible;
+            this.SelectedTable.Visibility = System.Windows.Visibility.Hidden;
         }
 	}
 }

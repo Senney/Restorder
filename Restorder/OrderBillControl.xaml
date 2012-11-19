@@ -7,20 +7,36 @@
 	x:Class="Restorder.OrderBillControl"
 	x:Name="UserControl"
 	d:DesignWidth="233.5" d:DesignHeight="573.833">
+	<UserControl.Resources>
+		<Style x:Key="OrderBillButton" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid>
+							<Rectangle Fill="#00F4F4F5" Stroke="Black"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
 
 	<Grid x:Name="LayoutRoot">
-<<<<<<< HEAD
-		<Grid x:Name="BillGrid" Margin="0,0,-2.5,-0.167" d:LayoutOverrides="Height">
-			<TextBlock x:Name="Seat" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="8,0,93,0" Text="Seat Number"/>
-			<TextBlock x:Name="SubTotal" Height="40" TextWrapping="Wrap" Text="Subtotal" VerticalAlignment="Top" HorizontalAlignment="Right" Width="89"/>
-			<StackPanel x:Name="ItemList" Margin="0,23,0,42" />
-=======
 		<Grid x:Name="SeatBillGrid" Margin="0,0,-2.5,-0.167" d:LayoutOverrides="Width, Height">
+			<Rectangle x:Name="bgFill" Fill="#00000000" Height="30" Stroke="#00000000" Margin="0,0,3,0" VerticalAlignment="Top"/>
 			<TextBlock x:Name="Seat" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="8,0,93,0" Text="Seat Number" FontSize="16"/>
 			<TextBlock x:Name="SubTotal" Height="40" TextWrapping="Wrap" Text="Subtotal" VerticalAlignment="Top" HorizontalAlignment="Right" Width="89" FontSize="16"/>
 			<StackPanel x:Name="ItemList" Margin="2,44,0,58"/>
-			<Button x:Name="RemoveTable" Content="RemoveSeat" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90"/>
->>>>>>> fba1b6b102eb3644083a3944b873b2a4eae5b06a
+			<Button x:Name="RemoveTable" Content="Remove Seat" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" Click="removeSeat"/>
+			<Button x:Name="DescBarButton" Height="30" Margin="0.333,0,2.667,0" Style="{DynamicResource OrderBillButton}" VerticalAlignment="Top" Click="handleClick"/>
 		</Grid>
 	</Grid>
 </UserControl>

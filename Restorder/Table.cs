@@ -9,6 +9,7 @@ namespace Restorder
     {
         public int type;
         public MenuItem item;
+        public string seat;
 
         public BillChangeArgs(int t, ref MenuItem i) { type = t; item = i; }
     }
@@ -21,6 +22,7 @@ namespace Restorder
         static double TAX = 1.05;
 
         public event BillChangedEventHandler BillChanged;
+        public bool HasHandler;
 
         private Dictionary<string, OrderBillControl> seatControls;
         public Dictionary<string, OrderBillControl> SeatControls
@@ -73,6 +75,7 @@ namespace Restorder
 
             // Notify that the bill has updated.   
             BillChangeArgs args = new BillChangeArgs(0, ref item);
+            args.seat = person;
             OnBillChange(args);
         }
 

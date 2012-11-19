@@ -35,6 +35,9 @@ namespace Restorder
             get { return itemPicture; }
         }
 
+        private string itemDesc;
+        public string Descriptor;
+
         private int m_id;
         public int ID
         {
@@ -42,10 +45,11 @@ namespace Restorder
             set { m_id = value; }
         }
 
-        public MenuItem(string name, double cost, string picture = null, string[] ingredients = null)
+        public MenuItem(string name, double cost, string desc = "", string picture = null, string[] ingredients = null)
         {
             this.itemName = name;
             this.itemCost = cost;
+            this.itemDesc = desc;
 
             if (picture != null)
             {

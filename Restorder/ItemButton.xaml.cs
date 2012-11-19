@@ -30,6 +30,12 @@ namespace Restorder
         public void reset()
         {
             this.bgRect.Fill = new SolidColorBrush(Color.FromRgb(244, 244, 245));
+            MainWindow.selectedButton = null;
+        }
+
+        public void addToOrder()
+        {
+            MainWindow.getTableManager().CurrentTable.addItem(menuItem, MainWindow.selectedSeat);
         }
 
 		private void overlayClick(object sender, System.Windows.RoutedEventArgs e)
@@ -37,9 +43,8 @@ namespace Restorder
             // Check if the current button has been pressed.
             if (MainWindow.selectedButton == this)
             {
-                MainWindow.getTableManager().CurrentTable.addItem(menuItem);
+                this.addToOrder();
                 this.reset();
-                MainWindow.selectedButton = null;
             }
             else
             {

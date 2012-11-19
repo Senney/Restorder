@@ -19,6 +19,14 @@ namespace Restorder
 	public partial class BillItemControl : UserControl
 	{
 		private MenuItem item;
+        private Brush oldBg;
+
+        public MenuItem Item
+        {
+            get { return item; }
+        }
+
+        public static BillItemControl Selected = null;
 		
 		public BillItemControl(MenuItem Item)
 		{
@@ -32,15 +40,51 @@ namespace Restorder
                 this.ItemName.Text = item.Name;
                 this.ItemTotal.Text = item.Cost.ToString("C");
             }
+
+            this.oldBg = this.bgColor.Fill;
 		}
 
-		private void removeItem(object sender, System.Windows.RoutedEventArgs e)
-		{
+        public void Remove()
+        {
             // Remove the item from the tables' bill.
             MainWindow.getTableManager().CurrentTable.removeItem(item);
 
             // Remove this item from the stack panel.
             (this.Parent as StackPanel).Children.Remove(this);
+
+            // Nullify the singleton so that selecting OBC's does not attempt to move invalid item.
+            BillItemControl.Selected = null;
+        }
+
+		private void removeItem(object sender, System.Windows.RoutedEventArgs e)
+		{
+            this.Remove();
+		}
+
+        public void reset()
+        {
+            this.bgColor.Fill = oldBg;
+        }
+
+		private void selectBillItem(object sender, System.Windows.RoutedEventArgs e)
+		{
+            if (OrderBillControl.Selected != null)
+                OrderBillControl.Selected.reset();
+
+            // Check if the current button has been pressed.
+            if (BillItemControl.Selected == this)
+            {
+                this.reset();
+                BillItemControl.Selected = null;
+            }
+            else
+            {
+                if (BillItemControl.Selected != null)
+                    BillItemControl.Selected.reset();
+                BillItemControl.Selected = this;
+
+                this.bgColor.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 32));
+            }
 		}
 	}
 }

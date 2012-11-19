@@ -12,7 +12,7 @@
 		<Grid x:Name="ItemTile" Background="White">
 			<TextBlock x:Name="FoodName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="206"/>
 			<TextBlock x:Name="Description" TextWrapping="Wrap" Margin="210,0,0,50"><Run Text="TextBlock"/></TextBlock>
-			<Button x:Name="Add" Content="Add Item" Height="46" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}"/>
+			<Button x:Name="Add" Content="Add Item" Height="46" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}" Click="addToOrder"/>
 		</Grid>
 		<TextBlock HorizontalAlignment="Left" Margin="8,38,0,8" TextWrapping="Wrap" Text="Ingredient List" Width="198"/>
 	</Grid>
