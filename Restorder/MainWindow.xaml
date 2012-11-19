@@ -87,15 +87,15 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-        <Grid x:Name="SelectedTable" Background="#FF0092A5" d:IsHidden="True">
-        	<Grid x:Name="Ordered" HorizontalAlignment="Right" Width="233.5" Margin="0,66.167,0,165.833" Background="White">
-        		<Button x:Name="AddSeat" Content="Add Seat" Height="45.833" VerticalAlignment="Top" Click="addSeat"/>
-        		<ScrollViewer x:Name="BillScroll" Margin="0,55.333,0,86.667" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanContentScroll="True">
+        <Grid x:Name="SelectedTable" Background="#FF969696">
+        	<Grid x:Name="Ordered" HorizontalAlignment="Right" Width="237.5" Margin="0,66.167,0,165.833" Background="#FFE5E5FF">
+        		<Button x:Name="AddSeat" Content="Add Seat" Height="45.833" VerticalAlignment="Top" Click="addSeat" Margin="0,0,4,0"/>
+        		<ScrollViewer x:Name="BillScroll" Margin="0,55.333,4,86.667" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" CanContentScroll="True">
         			<DockPanel x:Name="StackContainer">					
         				<StackPanel x:Name="TableBillStack" Width="233.5"/>
         			</DockPanel>
         		</ScrollViewer>
-        		<Grid x:Name="OrderTotal" Height="78.667" Margin="7.5,0,8,8" VerticalAlignment="Bottom">
+        		<Grid x:Name="OrderTotal" Height="78.667" Margin="7.5,0,12,8" VerticalAlignment="Bottom">
         			<TextBlock Height="18" Margin="8,8,0,0" TextWrapping="Wrap" Text="Sub-Total:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73.333" TextAlignment="Right" FontSize="16"/>
         			<TextBlock Margin="21.333,30,0,30.667" TextWrapping="Wrap" Text="Tax:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16"/>
         			<TextBlock Margin="21.333,0,0,8.667" TextWrapping="Wrap" Text="Total:" HorizontalAlignment="Left" Width="60" TextAlignment="Right" FontSize="16" Height="18" VerticalAlignment="Bottom"/>
@@ -116,10 +116,11 @@
             </Button>
         	<ScrollViewer x:Name="MenuScroll" Margin="0,66.167,237.5,165.833" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden">
         		<DockPanel>
-        			<StackPanel x:Name="MenuStack" Background="#FF76FF3A" CanVerticallyScroll="True" Width="528.5"/>
+        			<StackPanel x:Name="MenuStack" CanVerticallyScroll="True" Width="528.5" Background="#FF916262"/>
         		</DockPanel>
         	</ScrollViewer>
-            <local:SelectedItem x:Name="ItemDetail" Height="161.833" VerticalAlignment="Bottom"/>
+            <local:SelectedItem x:Name="ItemDetail" Height="165.833" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="TableName" Height="54.167" Margin="272,8,250,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24" TextAlignment="Center"/>
 		</Grid>
         <Grid x:Name="TablePage" Margin="0,0,0,101" d:IsHidden="True">
         	<Rectangle Fill="#FF454545" Margin="0,64,0,-104" Stroke="Black"/>

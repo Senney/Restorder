@@ -9,7 +9,7 @@
 	d:DesignWidth="754" d:DesignHeight="229.833">
 
 	<Grid x:Name="LayoutRoot">
-		<Grid x:Name="ItemTile" Background="White">
+		<Grid x:Name="ItemTile" Background="#FF969696">
 			<TextBlock x:Name="FoodName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="Selected Item" VerticalAlignment="Top" Width="206" FontSize="21.333" FontWeight="Bold" Margin="5,0,0,0"/>
 			<TextBlock x:Name="Description" TextWrapping="Wrap" Margin="210,8,8,50" Text="Item description" FontSize="16"/>
 			<Button x:Name="Add" Content="Add Item" Height="46" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="{x:Null}" Click="addToOrder"/>
